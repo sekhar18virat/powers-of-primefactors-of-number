@@ -1,0 +1,33 @@
+m=[]
+l=[]
+def primes(n):
+    global m
+    for i in range(n):
+        c=0
+        for j in range(1,i+1):
+            if(i%j==0):
+                c+=1
+        if(c==2):
+            m.append(i)
+primes(21)
+z=[]
+for i in m:
+    z.append(i)
+q=[]
+def pwr(n):
+    f=0
+    k=0
+    global l
+    global m
+    while(len(m)>0):
+        f,k=divmod(n,m[0])
+        if(k==0):
+            l.append(m[0])
+            return pwr(f)
+        else:
+            m.pop(0)
+            return pwr(n)
+pwr(21)
+for i in range(len(z)):
+    q.append(l.count(z[i]))
+print(l)
